@@ -1,5 +1,6 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
+        //SARTHAK AGRAWAL
     List<int[]> result =new ArrayList<>();
     Arrays.sort(intervals,Comparator.comparingDouble(o->o[0]));
      int[] curr=intervals[0];
