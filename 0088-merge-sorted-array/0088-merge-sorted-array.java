@@ -14,13 +14,13 @@ class Solution {
                 j--;
             }
             k--;
-    
         }
 
         // If elements remain in nums2, copy them
          while (j >= 0) {
-           // j--;
-             nums1[k--] = nums2[j--];
+             nums1[k] = nums2[j];
+             k--;
+             j--;
          }
        
     }
