@@ -11,12 +11,14 @@ class Solution {
             } else {
                 nums1[k--] = nums2[j--];
             }
+    
         }
 
         // If elements remain in nums2, copy them
-        while (j >= 0) {
-            nums1[k--] = nums2[j--];
-        }
+         while (j >= 0) {
+           // j--;
+             nums1[k--] = nums2[j];
+         }
        
     }
 }
