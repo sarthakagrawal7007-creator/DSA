@@ -5,8 +5,7 @@ class Solution {
        while (j<n) {
             if (nums[j]!=0){
                 nums[i]=nums[j];
-                i++;
-                }
+                i++;}
             j++;}
         while (i<n){
             nums[i]=0;
