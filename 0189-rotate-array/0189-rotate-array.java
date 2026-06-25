@@ -6,12 +6,12 @@ class Solution {
         rever(k,arr.length-1,arr);
 }
  public static void rever(int s,int e,int arr[]){
-        if (s>e){
-            return;
-        }
+       while(s<e){
         int temp=arr[s];
         arr[s]=arr[e];
         arr[e]=temp;
-        rever(s+1,e-1,arr);
+        s++;
+        e--;
+        }
     }
 }
