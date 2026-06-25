@@ -6,7 +6,7 @@ class Solution {
         rever(k,arr.length-1,arr);
 }
  public static void rever(int s,int e,int arr[]){
-        if (s>=e){
+        if (s>e){
             return;
         }
         int temp=arr[s];
