@@ -11,11 +11,11 @@ class Solution {
            r=s%10;
            sum=sum*10+r;
            s=s/10;
-         if(Integer.MAX_VALUE<=sum){
-        return 0;
-           }   
        }
-     if(x<0){
+     if(Integer.MAX_VALUE<=sum){
+        return 0;
+           }  
+     else if(x<0){
         return -(int)sum;
      }else{
         return (int)sum;
