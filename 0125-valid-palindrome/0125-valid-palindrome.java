@@ -1,25 +1,32 @@
 class Solution {
-    public boolean isPalindrome(String s) {
-        String lower = s.toLowerCase();
+    public boolean isPalindrome(String st) {
+        String s=st.toLowerCase();
         if(s==" "){
             return true;
-        }
-         return palin(0,lower.length()-1,lower);
-    }
-    public static boolean palin(int i,int j,String lower ){
-        if (i>=j){
-            return true;
-        }if (!Character.isLetterOrDigit(lower.charAt(i))){
-             return palin(i+1,j,lower);
+        }else{
+        int i=0,j=s.length()-1;
+        while (i < j) {
+            if (!isAlphaNum(s.charAt(i))) {
+                i++;
+                continue;
+            } else if (!isAlphaNum(s.charAt(j))) {
+                j--;
+                continue;
+            }
+            // char left = Character.toLowerCase(s.charAt(i));
+            // char right = Character.toLowerCase(s.charAt(j));
+            if (s.charAt(i)!=s.charAt(j)) {
+                return false;
+            }
 
-        }else if (!Character.isLetterOrDigit(lower.charAt(j))){
-           return palin(i,j-1,lower);
+            i++;
+            j--;
+         }
+        return true;
         }
-        if (lower.charAt(i)!=lower.charAt(j)){
-            return false;
-        }
-        return palin(i+1,j-1,lower);
     }
-    
+        public static boolean isAlphaNum ( char ch){
+           return (ch >= '0' && ch <= '9')
+                || (ch >= 'a' && ch <= 'z');
     }
-    
+}
