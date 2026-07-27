@@ -10,9 +10,9 @@ class Solution {
               cs+=nums[i];
             ms=Math.max(cs,ms);
         }
-        if(nums.length==1){
-            return nums[0];
-        }
+        // if(nums.length==1){
+        //     return nums[0];
+        // }
         return ms;
     }
 }
