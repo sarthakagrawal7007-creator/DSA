@@ -1,7 +1,6 @@
 class Solution {
     public int maxProfit(int[] prices) {
           int max_profit=0;
-        int n=prices.length;
         int buystock=prices[0];
         for (int price:prices) {
                 //max_profit=Math.max(max_profit,price-buystock);
