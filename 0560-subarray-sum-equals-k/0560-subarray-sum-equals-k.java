@@ -8,12 +8,9 @@ class Solution {
              sum+=nums[i];
              if (mp.containsKey(sum-k)){
                  count+=mp.get(sum-k);
-             }
-             if (mp.containsKey(sum)) {
-             mp.put(sum, mp.get(sum) + 1);
-             } else {
-               mp.put(sum, 1);
-           }        
+             } 
+              mp.put(sum, mp.getOrDefault(sum, 0) + 1);
+                  
         }
         return count;
         }
