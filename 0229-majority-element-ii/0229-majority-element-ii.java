@@ -3,14 +3,14 @@ class Solution {
        HashMap<Integer,Integer> mp=new HashMap<>();
       List<Integer> l1=new ArrayList<>() ;
 
-         mp.put(arr[0],1);
-        for (int i = 1; i <arr.length ; i++) {
+     
+        for (int i = 0; i <arr.length ; i++) {
             int curr=arr[i];
                 mp.put(curr, mp.getOrDefault(curr, 0) + 1);
             }
-        for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
-            if (entry.getValue() >arr.length / 3) {
-                l1.add(entry.getKey());
+           for (int key : mp.keySet()) {
+            if (mp.get(key) > arr.length / 3) {
+                l1.add(key);
             }
         }
         return l1;
