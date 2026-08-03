@@ -9,7 +9,7 @@ class Solution {
                 mp.put(curr, mp.getOrDefault(curr, 0) + 1);
             }
            for (int key : mp.keySet()) {
-            if (mp.get(key) > arr.length / 3) {
+            if (mp.get(key) >arr.length / 3) {
                 l1.add(key);
             }
         }
