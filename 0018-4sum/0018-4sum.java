@@ -6,11 +6,11 @@ class Solution {
         //int num[]={1,0,-1,0,-2,2};
          Arrays.sort(num);
          int n=num.length;
-        for (int i = 0; i <n-2 ; i++) {
+        for (int i = 0; i <n-3 ; i++) {
             if (i>0&&num[i]==num[i-1]){
                 continue;
             }
-            for (int a = i+1; a <num.length-1 ; a++) {
+            for (int a = i+1; a <num.length-2 ; a++) {
                 if (a > i + 1 &&num[a]==num[a-1]){
                     continue;
                 }
