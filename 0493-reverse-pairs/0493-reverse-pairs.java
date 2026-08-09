@@ -1,51 +1,80 @@
 class Solution {
-    public int reversePairs(int[] num) {
-        return (int)Inver(num,0,num.length-1);
+    public int reversePairs(int[] nums) {
+  
+      return coUnt(nums, 0, nums.length - 1);
     }
-     public static long Inver(int nums[],int st,int ed){
-        long count=0;
-        if(st<ed){
-        int mid=st+(ed-st)/2;
-             count+=Inver(nums,st,mid);
-             count+=Inver(nums,mid+1,ed);
 
-             count+=merge(nums,st,mid,ed);
+    public static int coUnt(int nums[], int i, int n) {
+
+        if (i >= n) {
+            return 0;
         }
+
+        int mid = i + (n - i) / 2;
+
+        int count = 0;
+
+        count += coUnt(nums, i, mid);
+        count += coUnt(nums, mid + 1, n);
+
+        count += merge(nums, i, mid, n);
+
         return count;
-     }
-     public static long merge(int num[],int st,int mid,int ed){
-        long count=0;
-        int j=mid+1;
-         for (int i = st; i <=mid ; i++) {
-             while (j <= ed &&  (long)num[i] > 2L*num[j]) {
-                 j++;
-             }
-               count+=j-(mid+1);
-         }
-        int temp[]=new int[ed-st+1];
-        int i=st;
-        j=mid+1;
-        int k=0;
-        while (i<=mid &&j<=ed){
-            if (num[i]>num[j]){
-                temp[k]=num[j];
+    }
+
+    public static int merge(int nums[], int o, int mid, int n) {
+
+        int count = 0;
+
+        // Count reverse pairs
+        int j = mid + 1;
+
+        for (int i = o; i <= mid; i++) {
+
+            while (j <= n && (long) nums[i] > 2L * nums[j]) {
                 j++;
-            }else {
-                temp[k]=num[i];
-                i++;
             }
+
+            count += j - (mid + 1);
+        }
+
+        // Merge two sorted halves
+        int temp[] = new int[n - o + 1];
+
+        int i = o;
+        j = mid + 1;
+        int k = 0;
+
+        while (i <= mid && j <= n) {
+
+            if (nums[i] <= nums[j]) {
+                temp[k] = nums[i];
+                i++;
+            } else {
+                temp[k] = nums[j];
+                j++;
+            }
+
             k++;
         }
-        while (i<=mid){
-            temp[k++]=num[i++];
+
+        while (i <= mid) {
+            temp[k] = nums[i];
+            i++;
+            k++;
         }
-         while (j<=ed){
-             temp[k++]=num[j++];
-         }
-         for (int l = 0,m=st; l <temp.length ; l++,m++) {
-             num[m]=temp[l];
-         }
-         return count;
-        
+
+        while (j <= n) {
+            temp[k] = nums[j];
+            j++;
+            k++;
+        }
+
+        // Copy back
+        for (int l = 0, p = o; l < temp.length; l++, p++) {
+            nums[p] = temp[l];
+        }
+
+        return count;
     }
 }
