@@ -13,6 +13,6 @@ class Solution {
                j=n-1;
            }
        }
-       return j+1;
+       return i;
     }
 }
