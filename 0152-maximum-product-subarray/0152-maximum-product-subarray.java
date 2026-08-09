@@ -6,9 +6,6 @@ class Solution {
             if(count==0){
                count=1;
             }count*=nums[i];
-            // if(max<nums[i]){
-            //     max=nums[i];
-            // }
             max=Math.max(count,max);
         }
         int max1=nums[nums.length-1];
