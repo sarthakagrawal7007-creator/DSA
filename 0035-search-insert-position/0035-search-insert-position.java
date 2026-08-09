@@ -5,7 +5,7 @@ class Solution {
         int n=0;
         int count=0;
        while (i<=j){
-            n=j+(i-j)/2;
+            n=i+(j-i)/2;
            if (nums[n]==target){
                System.out.println(n);
                return n;
