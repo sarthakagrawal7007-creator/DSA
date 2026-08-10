@@ -2,9 +2,12 @@ class Solution {
     public int singleNonDuplicate(int[] nums) {
          int l=0;
         int r=nums.length-1;
+        if(l==r){
+            return nums[0];
+        }else{
         while (l<r){
             int n=l+(r-l)/2;
-            if(nums[n]!=nums[n+1]&&nums[n]!=nums[n-1]){
+            if((nums[n]!=nums[n+1]&&nums[n]!=nums[n-1])){
                 return nums[n];
             }
             if (nums[l] != nums[l+1]) {
@@ -17,9 +20,8 @@ class Solution {
             }else {
                 r-=2;
             }
-        }if(nums.length==1){
-            return nums[0];
-        }else{
-        return -1;}
+        }
+        }
+        return -1;
     }
 }
