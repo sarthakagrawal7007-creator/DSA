@@ -9,6 +9,10 @@ class Solution {
         int m=i+(j-i)/2;
         if (nums[m]==target){
             return m;
+        }if (nums[i] == nums[m] && nums[m] == nums[j]) {
+            i++;
+            j--;
+            return Pivit(nums, i, j, target);
         }
         //mid exist line 1
         if (nums[i]<=nums[m]){
