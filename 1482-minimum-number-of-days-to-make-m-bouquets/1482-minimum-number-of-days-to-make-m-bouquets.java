@@ -26,8 +26,11 @@ class Solution {
             }
             if (c1<m){
                 i=day+1;
+               
             }else {
                 j=day;
+                
+               
             }
         }
         return i;
