@@ -22,7 +22,7 @@ class Solution {
 
                 long l = 1;
 
-                int minTime = Integer.MAX_VALUE;
+                int minTime = time[0];
 
                 for (int t : time) {
                     minTime = Math.min(minTime, t);
