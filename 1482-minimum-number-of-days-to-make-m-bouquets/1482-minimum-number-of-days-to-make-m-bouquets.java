@@ -24,13 +24,11 @@ class Solution {
                     count=0;
                 }
             }
-            if (c1<m){
-                i=day+1;
-               
+            if (c1>=m){
+               j=day;
             }else {
-                j=day;
+                i=day+1;
                 
-               
             }
         }
         return i;
