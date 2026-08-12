@@ -1,46 +1,23 @@
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
-       return minimumTim(time, totalTrips);
+        long i=1;
+       long j=time[0];
+        for (int t:time) {
+            j=Math.min(j,t);
+        }
+        j*=totalTrips;
+        while (i<j){
+            long mid=i+(j-i)/2;
+            long actual_trip=0;
+            for (int x:time){
+                actual_trip+=mid/x;
+            }
+            if (actual_trip>=totalTrips) {
+                j = mid;
+            }else {
+                i=mid+1;
+            }
+        }
+        return i;
     }
-     static boolean possibleHai(int[] time, long givenTime, int totalTrips) {
-
-                long actualTrips = 0;
-
-                for (int t : time) {
-                    actualTrips += givenTime / t;
-
-                    // Avoid unnecessary calculation
-                    if (actualTrips >= totalTrips) {
-                        return true;
-                    }
-                }
-
-                return actualTrips >= totalTrips;
-            }
-
-             public static long minimumTim(int[] time, int totalTrips) {
-
-                long l = 1;
-
-                int minTime = time[0];
-
-                for (int t : time) {
-                    minTime = Math.min(minTime, t);
-                }
-
-                long r = (long) minTime * totalTrips;
-
-                while (l < r) {
-
-                    long midTime = l + (r - l) / 2;
-
-                    if (possibleHai(time, midTime, totalTrips)) {
-                        r = midTime;
-                    } else {
-                        l = midTime + 1;
-                    }
-                }
-
-                return l;
-            }
 }
