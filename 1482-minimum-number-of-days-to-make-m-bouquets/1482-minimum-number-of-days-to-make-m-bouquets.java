@@ -16,7 +16,7 @@ class Solution {
             for(int x:bloomday){
                 if (day>=x){
                     count++;
-                    if (count%k==0) {
+                    if (count==k) {
                         c1++;
                         count=0;
                     }
