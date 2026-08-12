@@ -11,6 +11,9 @@ class Solution {
             long actual_trip=0;
             for (int x:time){
                 actual_trip+=mid/x;
+                if (actual_trip >= totalTrips) {
+                  break;
+            }
             }
             if (actual_trip>=totalTrips) {
                 j = mid;
