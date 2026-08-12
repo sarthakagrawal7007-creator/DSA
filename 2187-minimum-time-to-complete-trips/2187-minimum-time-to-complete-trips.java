@@ -15,7 +15,7 @@ class Solution {
                     }
                 }
 
-                return actualTrips >= totalTrips;
+                return false;
             }
 
              public static long minTime(int[] time, int totalTrips) {
