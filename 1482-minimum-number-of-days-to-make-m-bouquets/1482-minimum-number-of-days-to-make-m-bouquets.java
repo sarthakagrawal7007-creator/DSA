@@ -7,7 +7,7 @@ class Solution {
     static int minDys(int[] bloomDay, int m, int k) {
 
         // Not enough flowers to make m bouquets
-        if ((long) m * k > bloomDay.length) {
+        if ((long)m * k > bloomDay.length) {
             return -1;
         }
 
