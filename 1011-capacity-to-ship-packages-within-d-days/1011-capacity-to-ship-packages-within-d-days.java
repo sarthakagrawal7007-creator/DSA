@@ -27,9 +27,6 @@ class Solution {
         int count=days-1;
         int sum=0;
         for (int x:weights){
-            if (mid<x){
-                return mid+1;
-            }
             if (mid<=sum || sum+x>mid){
                 sum=0;
                 count--;
