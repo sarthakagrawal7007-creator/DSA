@@ -6,11 +6,11 @@ class Solution {
          i=Math.max(i,x);
          j+=x;
      }
-     if (nums.length==k){
-         System.out.println(i);
-     }else if (k==1){
-         System.out.println(j);
-     }
+    //  if (nums.length==k){
+    //      System.out.println(i);
+    //  }else if (k==1){
+    //      System.out.println(j);
+    //  }
      while (i<j){
          int mid=i+(j-i)/2;
        if (possible(nums,k,mid)){
