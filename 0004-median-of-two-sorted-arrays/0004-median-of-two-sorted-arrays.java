@@ -24,9 +24,9 @@ class Solution {
             j++;
             k++;
         }
-        float median=-1;
+        double median=-1;
        if (temp.length%2==0){
-           median=((float) temp[temp.length/2]+(float)temp[temp.length/2-1])/2;
+           median=(temp[temp.length/2]+temp[temp.length/2-1])/2.0;
 
        }else {
            median=temp[temp.length/2];
