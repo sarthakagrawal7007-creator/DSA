@@ -3,15 +3,13 @@ class Solution {
          int x=0;
        int y=0;
         for (char ch:str.toCharArray()) {
-            if (ch=='L'){
-                x-=1;
-            }else if (ch=='R'){
-                x+=1;
-            }else if (ch=='U'){
-                y+=1;
-            }else {
-                y-=1;
-            }
+            switch (ch) {
+                case 'L' -> x--;
+                case 'R' -> x++;
+                case 'U' -> y++;
+                case 'D' -> y--;
+    
+        }
         }
     return (x==0 && y==0);
     }
