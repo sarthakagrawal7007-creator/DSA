@@ -10,7 +10,12 @@ class Solution {
             ch[m]=ch[i];
             m++;
             if (count > 1) {
+                if(count<10){
+                   ch[m] = (char)(count + '0');  
+                   m++;
+                }else{
                 m = rec(count, ch, m);
+                }
             }
         }
         return m;
