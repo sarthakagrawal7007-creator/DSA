@@ -10,30 +10,14 @@ class Solution {
             ch[m]=ch[i];
             m++;
             if (count > 1) {
-                if(count<10){
-                   ch[m] = (char)(count + '0');  
-                   m++;
-                }else{
-                m = rec(count, ch, m);
+                String str = String.valueOf(count);
+
+                for (int j = 0; j < str.length(); j++) {
+                    ch[m] = str.charAt(j);
+                    m++;
                 }
             }
         }
-        return m;
-    }
-   public static int rec(int count, char[] ch, int m) {
-                    if (count == 0) {
-                        return m;
-                    }
-
-                    int r = count % 10;
-                    count = count / 10;
-
-                    m = rec(count, ch, m);
-
-                    ch[m] = (char)(r + '0');
-                    m++;
-
-                    return m;
-                }
-
+        return m;    
+        }
 }
