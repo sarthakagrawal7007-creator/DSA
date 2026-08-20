@@ -1,11 +1,16 @@
 import java.util.*;
 class Solution {
-    public String reverseWords(String s) {
-        StringTokenizer st = new StringTokenizer(s);
-        String str1="";
-        while (st.hasMoreTokens()){
-            str1=st.nextToken()+" "+str1;
+    public String reverseWords(String str) {
+        String[] words=str.split(" ");
+        StringBuilder sb=new StringBuilder("");
+        for (int i =words.length-1  ; 0<=i ; i--) {
+            if (words[i]==""){
+                continue;
+            }
+             sb.append(words[i]);
+             sb.append(" ");
         }
-        return str1.trim();
+       // sb.toString().trim();
+        return  sb.toString().trim();
     }
 }
