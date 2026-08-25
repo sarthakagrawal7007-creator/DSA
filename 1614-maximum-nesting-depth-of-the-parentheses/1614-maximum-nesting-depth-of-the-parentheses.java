@@ -7,8 +7,6 @@ class Solution {
                count++;
            }else if (ch==')'){
                count--;
-           }else {
-               continue;
            }
            max=Math.max(max,count);
     }
