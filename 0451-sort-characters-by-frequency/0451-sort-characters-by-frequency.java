@@ -1,30 +1,22 @@
 class Solution {
     public String frequencySort(String s) {
-        int[] freq = new int[123];
-
-        // Count frequency
-        for (char ch : s.toCharArray()) {
-            freq[ch]++;
-        }
-
-        // Store characters in a list
-        List<Character> list = new ArrayList<>();
+         HashMap<Character, Integer> map = new HashMap<>();
 
         for (char ch : s.toCharArray()) {
-            if (!list.contains(ch)) {
-                list.add(ch);
-            }
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
-        // Sort characters by frequency
-        Collections.sort(list, (a, b) -> freq[b] - freq[a]);
+        // Convert map entries to list
+        List<Map.Entry<Character, Integer>> list =new ArrayList<>(map.entrySet());
+        System.out.println(list);
 
-        // Create result
-        String result = "";
-for (char ch : list) {
-    result += String.valueOf(ch).repeat(freq[ch]);
-}
+        Collections.sort(list, (a, b) -> b.getValue() - a.getValue());
 
-        return result;
+        StringBuilder result = new StringBuilder();
+
+        for (Map.Entry<Character, Integer> entry : list) {
+            result.append(String.valueOf(entry.getKey()).repeat(entry.getValue()));
+        }
+         return result.toString();
     }
 }
