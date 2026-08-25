@@ -21,12 +21,9 @@ class Solution {
 
         // Create result
         String result = "";
-
-        for (char ch : list) {
-            for (int i = 0; i < freq[ch]; i++) {
-                result += ch;
-            }
-        }
+for (char ch : list) {
+    result += String.valueOf(ch).repeat(freq[ch]);
+}
 
         return result;
     }
