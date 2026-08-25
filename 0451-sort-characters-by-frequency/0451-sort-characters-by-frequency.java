@@ -10,11 +10,11 @@ class Solution {
                 l1.add(ch);
             }
         }
-        String st="";
+       StringBuilder st=new StringBuilder("");
         Collections.sort(l1,(a,b)->freq[b]-freq[a]);
         for (char ch:l1){
-            st += String.valueOf(ch).repeat(freq[ch]);
+            st.append(String.valueOf(ch).repeat(freq[ch]));
         }
-         return st;
+         return st.toString();
     }
 }
