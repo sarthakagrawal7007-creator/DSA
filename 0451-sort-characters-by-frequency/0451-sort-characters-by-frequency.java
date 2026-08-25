@@ -13,9 +13,7 @@ class Solution {
         String st="";
         Collections.sort(l1,(a,b)->freq[b]-freq[a]);
         for (char ch:l1){
-            for (int i = 0; i <freq[ch] ; i++) {
-                st+=ch;
-            }
+            st += String.valueOf(ch).repeat(freq[ch]);
         }
          return st;
     }
