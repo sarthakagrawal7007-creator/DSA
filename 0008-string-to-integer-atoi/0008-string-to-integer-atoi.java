@@ -19,15 +19,16 @@ class Solution {
             sum = sum * 10 + (s.charAt(i) - '0');
 
             // 4. Check overflow
-            if (sign * sum >= Integer.MAX_VALUE) {
-                return Integer.MAX_VALUE;
-            }
+           int p=Integer.MAX_VALUE;
+           int q=Integer.MIN_VALUE;
 
-            if (sign * sum <= Integer.MIN_VALUE) {
-                return Integer.MIN_VALUE;
-            }
+            if (sign*sum>=p){
+                 return p;}
 
-            i++;
+            else if (sign*sum<=q){
+                return q;}
+
+           i++;
         }
         return (int)(sign*sum);
 
