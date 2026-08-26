@@ -5,11 +5,7 @@ class Solution {
         int q=0;
      for (int i = 0; i <s.length() ; i++) {
             for (int j = i+1; j <s.length() ; j++) {
-               b1= digit(s,i,j);
-               if (b1){
-                //    if (q-p<=j-i && j==s.length()-1){
-                //        return s.substring(i,j+1);
-                //    }
+               if (digit(s,i,j)){
                   if (q-p<=j-i){
                        p=i;
                        q=j;
