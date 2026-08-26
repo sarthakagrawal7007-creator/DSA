@@ -16,7 +16,7 @@ class Solution {
             if (len > maxLen) {
                 maxLen = len;
 
-                start = i - (len - 1) / 2;
+                start = i - (len-1) / 2;
             }
         }
 
