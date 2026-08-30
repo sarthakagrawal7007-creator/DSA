@@ -14,15 +14,15 @@ class Solution {
          ListNode curr=head;
 
 
-         while(curr!=null){
-        ListNode next = curr.next;
-           curr.next=prev;
-            prev=curr;
-            curr=next;
+         while(head!=null){
+        ListNode next = head.next;
+           head.next=prev;
+            prev=head;
+            head=next;
         
          } 
           head=prev;
         
-          return head;
+          return prev;
     }
 }
