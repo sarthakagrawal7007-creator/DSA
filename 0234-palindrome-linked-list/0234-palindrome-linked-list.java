@@ -14,38 +14,37 @@ class Solution {
             return true;
         }
       ListNode temp=head;
-      int size=0;
+         int size=0;
       while(temp!=null){
         temp=temp.next;
-        size++;
+         size++;
       }
-      int size1=size/2;
           ListNode list1=head;
-          ListNode lista=head;
-          for(int i=1;i<size1;i++){
-            lista=lista.next;
+          //ListNode lista=head;
+          for(int i=1;i<size/2;i++){
+            list1=list1.next;
           }
           ListNode list2=null;
           if(size%2!=0){
-          list2=lista.next.next;
+          list2=list1.next.next;
           }else{
-          list2=lista.next;
+          list2=list1.next;
           }
-           lista.next=null;
+           list1.next=null;
            ListNode pre=null;
-           ListNode curr=list1;
+           ListNode curr=head;
            while(curr!=null){
             ListNode ne=curr.next;
             curr.next=pre;
             pre=curr;
             curr=ne;
            }
-           list1=pre;
-           for(int i=1;i<=size1;i++){
-            if(list1.val!=list2.val){
+           head=pre;
+           for(int i=1;i<=size/2;i++){
+            if(head.val!=list2.val){
                 return false;
             }
-            list1=list1.next;
+            head=head.next;
             list2=list2.next;
 
            }
