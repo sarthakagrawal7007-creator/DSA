@@ -9,30 +9,23 @@
  * }
  */
 class Solution {
-
     ListNode left;
-
     public boolean isPalindrome(ListNode head) {
-        left = head;
-        return isPal(head);
+        left=head;
+        return check(head);
     }
-
-    public boolean isPal(ListNode right) {
-
-        if (right == null) {
+    public boolean check(ListNode right){
+        if(right==null){
             return true;
         }
-
-        if (!isPal(right.next)) {
+        //right=right.next;
+        if(!check(right.next)){
             return false;
         }
-
-        if (right.val != left.val) {
+        if(left.val!=right.val){
             return false;
         }
-
-        left = left.next;
-
+        left=left.next;
         return true;
     }
 }
