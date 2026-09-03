@@ -9,30 +9,30 @@
  * }
  */
 class Solution {
+
+    ListNode left;
+
     public boolean isPalindrome(ListNode head) {
-        if (head == null || head.next == null) {
+        left = head;
+        return isPal(head);
+    }
+
+    public boolean isPal(ListNode right) {
+
+        if (right == null) {
             return true;
         }
-        ListNode fast=head;
-        ListNode pre=null;
-        ListNode slow=head;
-        while(fast!=null && fast.next!=null){
-            fast=fast.next.next;
-            ListNode after=slow.next;
-            slow.next=pre;
-            pre=slow;
-            slow=after;
+
+        if (!isPal(right.next)) {
+            return false;
         }
-        if (fast != null) {
-            slow = slow.next;
+
+        if (right.val != left.val) {
+            return false;
         }
-        while(pre!=null&&slow!=null){
-            if(pre.val!=slow.val){
-                return false;
-            }
-            pre=pre.next;
-            slow=slow.next;
-        }
-            return true;
+
+        left = left.next;
+
+        return true;
     }
 }
