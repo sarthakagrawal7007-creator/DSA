@@ -15,16 +15,12 @@ class Solution {
             return head;
         }
         ListNode slow=head;
-        ListNode fast=head;
-        ListNode pre=null;
+        ListNode fast=head.next.next;
         while(fast!=null&&fast.next!=null){
-            pre=slow;
             slow=slow.next;
             fast=fast.next.next;
         }
-        pre.next=slow.next;
-        slow=null;
-
+        slow.next=slow.next.next;
        return head;
     }
 }
