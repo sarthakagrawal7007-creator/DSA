@@ -18,7 +18,6 @@ class Solution {
         if(right==null){
             return true;
         }
-        //right=right.next;
         if(!check(right.next)){
             return false;
         }
