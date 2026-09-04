@@ -57,16 +57,11 @@ class Solution {
             }
             temp=temp.next;
         }
-        while (start!=null){
-            temp.next=start;
-            start=start.next;
-            temp=temp.next;
-        }
-        while (end!=null){
-            temp.next=end;
-            end=end.next;
-            temp=temp.next;
-        }
+        if (start != null) {
+         temp.next = start;
+           } else {
+            temp.next = end;
+          }
         return dummy.next;
     }
 }
