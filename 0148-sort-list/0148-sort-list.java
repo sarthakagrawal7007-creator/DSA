@@ -54,7 +54,7 @@ class Solution {
             }
             temp=temp.next;
         }
-        temp.next =start != null ? start :end;
+        temp.next =start!= null ? start :end;
         return dummy.next;
     }
 }
