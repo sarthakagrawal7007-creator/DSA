@@ -54,11 +54,7 @@ class Solution {
             }
             temp=temp.next;
         }
-        if (start != null) {
-         temp.next = start;
-           } else {
-            temp.next = end;
-          }
+        temp.next =start != null ? start :end;
         return dummy.next;
     }
 }
