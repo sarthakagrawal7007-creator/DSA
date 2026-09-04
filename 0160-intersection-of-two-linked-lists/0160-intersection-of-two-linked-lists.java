@@ -43,13 +43,11 @@ public class Solution {
         }
        }
        //ListNode n=new ListNode(0);
-       while(tempA!=null && tempB!=null){
-        if(tempA==tempB){
-          return tempA;
+       while (tempA != tempB) {
+            tempA = tempA.next;
+            tempB = tempB.next;
         }
-         tempA=tempA.next;
-          tempB=tempB.next;
-       }
-       return null;
+
+        return tempA;
     }
 }
