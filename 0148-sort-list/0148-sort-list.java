@@ -12,70 +12,61 @@ class Solution {
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) {
             return head;
-        }
-        ListNode temp=head;
-        ListNode pre=null;
-        int size=0;
-      while(temp!=null){
-        temp=temp.next;
-        size++;
-      }
-      int arr[]=new int[size];
-      temp=head;
-      int s=0;
-      while(temp!=null){
-        arr[s]=temp.val;
-        temp=temp.next;
-        s++;}
-
-     sort(arr,0,arr.length-1);
-      temp = head;
-        s = 0;
-
-        while (temp != null) {
-            temp.val = arr[s];
-            temp = temp.next;
-            s++;
-        }
-        return head;
-    }
-    public static void sort(int arr[],int i,int j){
-        if (i>=j){
-            return;
-        }
-        int mid=i+(j-i)/2;
-          sort(arr,i,mid);
-          sort(arr,mid+1,j);
-          sort(arr,i,j,mid);
-    }
-    public static void sort(int arr[],int i,int j,int mid){
-        int temp[]=new int[j-i+1];
-        int l=j;
-        int p=i;
-        int m=mid+1;
-        int k=0;
-        while (i<=mid &&m<=l){
-            if (arr[i]>arr[m]){
-                temp[k]=arr[m];
-                m++;
-            }else {
-                temp[k]=arr[i];
-                i++;
             }
-            k++;
+          return sort(head);
+    }
+     public static ListNode sort(ListNode head) {
+        // Base case
+        if (head == null || head.next == null) {
+            return head;
         }
-        while (i<=mid){
-            temp[k]=arr[i];
-            k++;
-            i++;
+
+        ListNode slow = head;
+        ListNode fast = head;
+        ListNode pre = null;
+
+        // Find middle
+        while (fast != null && fast.next != null) {
+            pre = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        while (m<=l){
-            temp[k]=arr[m];
-            k++;
-            m++;
+
+        // Split into two lists
+        pre.next = null;
+
+        // Left half
+        ListNode left = sort(head);
+
+        // Right half
+        ListNode right = sort(slow);
+
+        // Merge
+        return merge(left, right);
+    }
+    public static ListNode merge(ListNode start,ListNode end){
+        ListNode dummy = new ListNode(0);
+        ListNode temp = dummy;
+        while (start!=null && end!=null){
+            if (start.val>=end.val){
+                temp.next=end;
+               end=end.next;
+            }else {
+                temp.next=start;
+                start=start.next;
+            }
+            temp=temp.next;
         }
-        for (int n = 0,f=p; n <temp.length ; n++,f++) {
-            arr[f]=temp[n];
+        while (start!=null){
+            temp.next=start;
+            start=start.next;
+            temp=temp.next;
         }
+        while (end!=null){
+            temp.next=end;
+            end=end.next;
+            temp=temp.next;
+        }
+        return dummy.next;
     }
 }
