@@ -20,14 +20,13 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-
         ListNode slow = head;
-        ListNode fast = head.next;
-
-        // Find middle
+        if(head.next.next!=null){
+        ListNode fast = head.next.next;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
+        }
         }
         ListNode mid;
         mid=slow.next;
