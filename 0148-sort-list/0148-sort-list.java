@@ -22,24 +22,21 @@ class Solution {
         }
 
         ListNode slow = head;
-        ListNode fast = head;
-        ListNode pre = null;
+        ListNode fast = head.next;
 
         // Find middle
         while (fast != null && fast.next != null) {
-            pre = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
-
-        // Split into two lists
-        pre.next = null;
-
+        ListNode mid;
+        mid=slow.next;
+        slow.next=null;
         // Left half
         ListNode left = sort(head);
 
         // Right half
-        ListNode right = sort(slow);
+        ListNode right = sort(mid);
 
         // Merge
         return merge(left, right);
