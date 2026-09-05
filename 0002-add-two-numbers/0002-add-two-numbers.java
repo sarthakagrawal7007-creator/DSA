@@ -30,7 +30,7 @@ class Solution {
         sum.next=new ListNode(total); 
         sum=sum.next;
        }
-       if(carry!=0){
+       if(carry==1){
           sum.next = new ListNode(carry);
        }
        return dummy.next;
