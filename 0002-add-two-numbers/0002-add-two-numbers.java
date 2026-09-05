@@ -17,18 +17,19 @@ class Solution {
         int carry=0;
        while(L1!=null||L2!=null){
          int total=carry;
-          if(L1!=null){
-            total += L1.val;
-             L1=L1.next;
-          }
-          if(L2!=null){
-              total += L2.val;
-                L2=L2.next;
-          }
+            int a = (L1 != null) ? L1.val : 0;
+            int b = (L2 != null) ? L2.val : 0;
+
+             total+=a+b;
              carry=total/10;
-             total=total%10;
-        sum.next=new ListNode(total); 
+
+        sum.next=new ListNode(total%10); 
         sum=sum.next;
+         if (L1 != null)
+        L1 = L1.next;
+
+          if (L2 != null)
+        L2 = L2.next;
        }
        if(carry==1){
           sum.next = new ListNode(carry);
