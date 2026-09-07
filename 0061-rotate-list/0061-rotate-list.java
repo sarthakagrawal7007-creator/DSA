@@ -10,50 +10,31 @@
  */
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
-        if(head==null||head.next==null){
+        if(head==null||head.next==null||k==0){
             return head;
         }
-        int count = 0;
+        int count = 1;
         ListNode temp = head;
 
-        while (temp != null) {
+        while (temp.next!= null) {
             count++;
             temp = temp.next;
         }
-
         k = k % count;
-        if(k==0||k==count){
+        if(k==count){
             return head;
         }
+        // circular Linklist
+        temp.next=head;
+        ListNode nTail=head;
+        k=count-k;
+        for(int i=1;i<k;i++) {
+           nTail=nTail.next;
+        }
+       // ListNode Nhead=
 
-        head= rever(head);
-        ListNode first=head;
-        ListNode second=head;
-        ListNode part1=null;
-        for(int i=1;i<=k;i++) {
-            part1=second;
-           second=second.next;
-        }
-        part1.next=null;
-        first=rever(first);
-        second=rever(second);
-        ListNode top=first;
-        while (first.next!=null){
-            first=first.next;
-        }
-        first.next=second;
-        head=top;
+        head=nTail.next;
+        nTail.next=null;
         return head;
     }
-    public static ListNode rever(ListNode head){
-    ListNode pre=null;
-    ListNode curr=head;
-       while(curr!=null){
-          ListNode after=curr.next;
-          curr.next=pre;
-          pre=curr;
-          curr=after;
-       }
-       return pre;
-       }
 }
