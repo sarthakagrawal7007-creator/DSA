@@ -11,15 +11,15 @@
  class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode temp = head;
-        int count = 0;
+        int c= 0;
 
         // Check if at least k nodes exist
-        while (count < k) {
+        while (c < k) {
             if (temp == null)
                 return head;
 
             temp = temp.next;
-            count++;
+            c++;
         }
 
         // Reverse the remaining groups first
@@ -27,15 +27,15 @@
 
         // Reverse current group
         ListNode curr = head;
-
-        while (count > 0) {
+           c=0;
+        while (c < k) {
             ListNode nextNode = curr.next;
 
             curr.next = prevNode;
             prevNode = curr;
             curr = nextNode;
 
-            count--;
+            c++;
         }
 
         return prevNode;
