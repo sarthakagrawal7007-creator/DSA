@@ -17,33 +17,31 @@ class Solution {
         if(head==null){
             return null;
         }
-    HashMap<Node,Node> map=new HashMap<>();
-       Node curr=head;
-       Node prenode=null;
-       Node newhead=null;
-       while(curr!=null){
-        Node temp=new Node(curr.val);
-        map.put(curr,temp);
-        if(newhead==null){
-            newhead = temp;
-            prenode = temp;
-        }else{
-          prenode.next=temp;
-          prenode=temp;
-          }
-          curr=curr.next;
-       }
-       curr=head;
-       Node newcurr=newhead;
-       while(curr!=null){
-        if(curr.random==null){
-        newcurr.random=null;
-        }else{
-        newcurr.random = map.get(curr.random);
-       }
-        curr = curr.next;
-        newcurr = newcurr.next;
-       }
-       return newhead;
+        Node curr=head;   
+        while(curr!=null){
+           Node after=curr.next; 
+           curr.next=new Node(curr.val);
+           curr.next.next=after;
+           curr=after;
+        }
+
+        curr=head;
+        while(curr!=null &&curr.next!=null){
+            if(curr.random==null){
+                curr.next.random=null;
+            }else{
+            curr.next.random=curr.random.next;}
+            curr=curr.next.next;
+        }
+        Node newnode=head.next;
+        Node newcurr=newnode;
+        curr=head;
+        while(curr!=null && newcurr!=null){
+            curr.next=curr.next==null?null:curr.next.next;
+            newcurr.next=newcurr.next==null?null:newcurr.next.next;
+            curr=curr.next;
+            newcurr=newcurr.next;
+        }
+      return newnode;
     }
 }
