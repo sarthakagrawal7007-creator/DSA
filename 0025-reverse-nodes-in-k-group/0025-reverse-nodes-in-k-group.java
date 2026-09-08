@@ -10,34 +10,26 @@
  */
  class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode temp = head;
-        int c= 0;
-
-        // Check if at least k nodes exist
-        while (c < k) {
-            if (temp == null)
+        ListNode temp=head;
+        int sz=0;
+        while(sz<k){
+            if(temp==null){
                 return head;
-
-            temp = temp.next;
-            c++;
+            }
+            temp=temp.next;
+            sz++;
         }
+        ListNode prenode=reverseKGroup(temp,k);
+         temp=head;
+         sz=0;
+           while(sz<k){
+            ListNode curr=temp.next;
+            temp.next=prenode;
+            prenode=temp;
+            temp=curr;
+            sz++;
+           }
+           return prenode;
 
-        // Reverse the remaining groups first
-        ListNode prevNode = reverseKGroup(temp, k);
-
-        // Reverse current group
-        ListNode curr = head;
-           c=0;
-        while (c < k) {
-            ListNode nextNode = curr.next;
-
-            curr.next = prevNode;
-            prevNode = curr;
-            curr = nextNode;
-
-            c++;
-        }
-
-        return prevNode;
     }
-}
+    }
