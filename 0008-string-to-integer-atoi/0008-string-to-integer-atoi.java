@@ -1,33 +1,57 @@
 class Solution {
     public int myAtoi(String s) {
-           int i = 0;
-           long sum = 0;
-        int l= s.length();
-         while (i < l && s.charAt(i) == ' ') {
+        int i = 0;
+
+        // 1. Skip leading spaces
+        while (i < s.length() && s.charAt(i) == ' ') {
             i++;
-         }
-         int sig=1;
-          if (i < l && s.charAt(i) == '-') {
-            sig = -1;
-             i++;
-          } else if (i < l && s.charAt(i) == '+') {
-           i++;
-         }
-           while(i<l &&s.charAt(i)=='0'){
+        }
+
+        // 2. Sign
+        int sign = 1;
+
+        if (i < s.length() && s.charAt(i) == '-') {
+            sign = -1;
             i++;
-         }
-         while(i<l && (s.charAt(i)>='0'&&s.charAt(i)<='9')){
-            int r=(int)(s.charAt(i)-'0');
-            sum=sum*10+r;
-             if (sig==1&&sum>Integer.MAX_VALUE){
+        } else if (i < s.length() && s.charAt(i) == '+') {
+            i++;
+        }
+
+        // 3. Recursively read digits
+        long ans = convert(s, i, 0, sign);
+
+        // 4. Clamp to int range
+        if (ans > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+
+        if (ans < Integer.MIN_VALUE) {
+            return Integer.MIN_VALUE;
+        }
+
+        return (int) ans;
+    }
+
+    public long convert(String s, int i, long sum, int sign) {
+
+        // End of string or non-digit
+        if (i >= s.length() || s.charAt(i) < '0' || s.charAt(i) > '9') {
+            return sum * sign;
+        }
+
+        int digit = s.charAt(i) - '0';
+
+        // Check overflow before adding digit
+        if (sum > Integer.MAX_VALUE) {
+            if (sign == 1) {
                 return Integer.MAX_VALUE;
-            }else if(sig==-1&&-sum<Integer.MIN_VALUE){
+            } else {
                 return Integer.MIN_VALUE;
             }
-            i++;
-         }
-         return (int)(sum*sig);
-         
+        }
+
+        sum = sum * 10 + digit;
+
+        return convert(s, i + 1, sum, sign);
     }
-    }
-        
+}
