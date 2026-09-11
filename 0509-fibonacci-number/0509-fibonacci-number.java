@@ -1,13 +1,11 @@
 class Solution {
     public int fib(int num) {
-     return fab(num);
-
+        return fun(num);
     }
-     public static int fab(int num){
-        if (num==0||num==1){
-            return num;
+   public static int fun(int n){
+        if(n==0||n==1){
+            return n;
         }
-        return fab(num-1)+fab(num-2);
-    }        
-
-}
+        return fun(n-1)+fun(n-2);
+    }
+    }
