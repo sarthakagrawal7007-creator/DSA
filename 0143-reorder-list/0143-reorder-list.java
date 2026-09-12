@@ -25,7 +25,8 @@ class Solution {
                 fast=fast.next.next;
             }
             pre.next=null;
-               pre=null;
+
+           pre=null;
           ListNode  curr=slow;
 
           while (curr!=null){
@@ -47,11 +48,11 @@ class Solution {
             temp.next=left;
             left=left.next;
 
-            temp=temp.next!=null?temp.next:null;
+            temp=temp.next;
          
             temp.next=right;
             right=right.next;
-            temp=temp.next!=null?temp.next:null;
+            temp=temp.next;
 
         }
         temp.next=left!=null?left:right;
