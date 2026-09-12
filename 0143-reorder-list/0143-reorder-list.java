@@ -37,25 +37,22 @@ class Solution {
           }
           slow=pre;
 
-        return zig(head,slow);
-    }
-    public static ListNode zig(ListNode left,ListNode right){
         ListNode dummy=new ListNode(0);
         ListNode temp=dummy;
        
-        while (left!=null && right!=null){
+        while (head!=null && slow!=null){
            
-            temp.next=left;
-            left=left.next;
+            temp.next=head;
+            head=head.next;
 
             temp=temp.next;
          
-            temp.next=right;
-            right=right.next;
+            temp.next=slow;
+            slow=slow.next;
             temp=temp.next;
 
         }
-        temp.next=left!=null?left:right;
+        temp.next=head!=null?head:slow;
         return dummy.next;
     }
 }
