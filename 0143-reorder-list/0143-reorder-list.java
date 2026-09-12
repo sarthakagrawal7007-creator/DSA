@@ -10,12 +10,11 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
+         if(!(head.next==null||head==null)){
         reverseKGroup(head);
+        }
     }
       public static ListNode reverseKGroup(ListNode head) {
-        if(head.next==null||head==null){
-            return head;
-        }
             ListNode slow=head;
             ListNode fast=head;
             ListNode pre=null;
