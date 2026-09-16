@@ -10,7 +10,7 @@ class Solution {
                } else if((s.peek()=='(' && arr==')')||(s.peek()=='[' && arr==']')||(s.peek()=='{' && arr=='}')){
                s.pop();
            }else {
-               s.push(arr);
+               return false;
            }
        }
        }
