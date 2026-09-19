@@ -15,9 +15,7 @@ class Solution {
            nsr[i]=s.peek();}
            s.push(i);
        }
-       while (!s.isEmpty()){
-           s.pop();
-       }
+       s.clear();
        for (int i = 0; i <arr.length ; i++) {
            while (!s.isEmpty() && arr[i]<=arr[s.peek()]){
                s.pop();
