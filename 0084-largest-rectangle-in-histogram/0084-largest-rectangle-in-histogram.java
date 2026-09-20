@@ -1,8 +1,5 @@
 class Solution {
     public int largestRectangleArea(int[] arr) {
-        if (arr.length == 1) {
-            return arr[0];
-        }
         Stack<Integer> s=new Stack<>();
        int maxi=0;
        //int[] arr={2,1,5,6,2,3};
@@ -18,7 +15,9 @@ class Solution {
            nsr[i]=s.peek();}
            s.push(i);
        }
-       s.clear();
+       while (!s.isEmpty()){
+           s.pop();
+       }
        for (int i = 0; i <arr.length ; i++) {
            while (!s.isEmpty() && arr[i]<=arr[s.peek()]){
                s.pop();
