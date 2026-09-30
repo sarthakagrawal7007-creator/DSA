@@ -3,17 +3,16 @@ class MyStack {
         Queue<Integer> q2;
     public MyStack() {
         q1=new LinkedList<>();
-        q2=new LinkedList<>();
-        
+        q2=new LinkedList<>();    
     }
         public void push(int x) {
+            q2.add(x);
           while (!q1.isEmpty()){
               q2.add(q1.remove());
           }
-          q1.add(x);
-            while (!q2.isEmpty()){
-                q1.add(q2.remove());
-            }
+           Queue<Integer> temp=new LinkedList<>();;
+            q1=q2;
+            q2=temp;
         }
         public int pop() {
              return q1.remove();
