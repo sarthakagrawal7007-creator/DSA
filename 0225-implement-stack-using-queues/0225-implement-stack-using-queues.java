@@ -6,20 +6,33 @@ class MyStack {
         q2=new LinkedList<>();    
     }
         public void push(int x) {
-            q2.add(x);
-          while (!q1.isEmpty()){
-              q2.add(q1.remove());
-          }
-           Queue<Integer> temp=new LinkedList<>();;
-            q1=q2;
-            q2=temp;
+            q1.add(x);
         }
         public int pop() {
-             return q1.remove();
+            int s=-1;
+          while (!q1.isEmpty()){
+              s=q1.remove();
+              if (q1.isEmpty()){
+                  break;
+              }
+              q2.add(s);
+          }
+            Queue<Integer> temp=new LinkedList<>();
+            q1=q2;
+            q2=temp;
+            return s;
         }
 
         public int top() {
-            return q1.peek();
+            int s=-1;
+            while (!q1.isEmpty()){
+                s=q1.remove();
+                q2.add(s);
+            }
+            Queue<Integer> temp=new LinkedList<>();
+            q1=q2;
+            q2=temp;
+            return s;
         }
 
         public boolean empty() {
